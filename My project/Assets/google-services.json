@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "449029228180",
+    "firebase_url": "https://caramelofuriosoranking-default-rtdb.firebaseio.com",
+    "project_id": "caramelofuriosoranking",
+    "storage_bucket": "caramelofuriosoranking.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:449029228180:android:b675dcc7ef8f118b035681",
+        "android_client_info": {
+          "package_name": "com.hexavision.caramelofurioso"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXfBprldJ2ptRZ2fkVNaGbuuVJALUzKzY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

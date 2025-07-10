@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "977798743969",
+    "firebase_url": "https://paobo-37977-default-rtdb.firebaseio.com",
+    "project_id": "paobo-37977",
+    "storage_bucket": "paobo-37977.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977798743969:android:cedd58a39821af6b166de0",
+        "android_client_info": {
+          "package_name": "pao.bo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjBCNSeHWeXvbzjHXJgbYh-HpupPdkQ-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
