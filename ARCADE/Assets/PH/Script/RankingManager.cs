@@ -7,10 +7,10 @@ using System.Linq; // Importante para usar OrderBy
 
 public class RankingManager : MonoBehaviour
 {
-    public static RankingManager Instance; // Padrão Singleton
+    public static RankingManager Instance;
 
-    private RankingData rankingData;
-    private string savePath;
+    private const string RankingKey = "GameRanking"; // A "chave" para salvar/carregar nos PlayerPrefs
+    private const int MaxRankingEntries = 10; // Limita o ranking aos 10 melhores
 
     void Awake()
     {
@@ -18,64 +18,76 @@ public class RankingManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Não destruir ao carregar nova cena
+            DontDestroyOnLoad(gameObject); // Garante que este objeto não seja destruído ao carregar novas cenas
         }
         else
         {
             Destroy(gameObject);
-            return;
         }
-
-        // Define o caminho do arquivo de save
-        savePath = Path.Combine(Application.persistentDataPath, "ranking.json");
-
-        LoadRanking();
     }
 
-    private void LoadRanking()
+    /// <summary>
+    /// Adiciona uma nova pontuação ao ranking.
+    /// </summary>
+    public void AddScore(string playerName, int newScore)
     {
-        if (File.Exists(savePath))
-        {
-            string json = File.ReadAllText(savePath);
-            rankingData = JsonUtility.FromJson<RankingData>(json);
-            Debug.Log("Ranking carregado com sucesso!");
-        }
-        else
-        {
-            rankingData = new RankingData();
-            Debug.Log("Nenhum ranking encontrado. Criando um novo.");
-        }
-    }
+        RankingData rankingData = LoadRanking();
 
-    private void SaveRanking()
-    {
-        // Ordena a lista em ordem decrescente de pontuação antes de salvar
-        if (rankingData != null && rankingData.entries != null)
+        // Adiciona a nova entrada
+        rankingData.entries.Add(new ScoreEntry { name = playerName, score = newScore });
+
+        // Ordena a lista: do maior score para o menor
+        rankingData.entries = rankingData.entries.OrderByDescending(e => e.score).ToList();
+
+        // Remove o excesso, mantendo apenas os melhores
+        if (rankingData.entries.Count > MaxRankingEntries)
         {
-            rankingData.entries = rankingData.entries.OrderByDescending(e => e.score).ToList();
+            rankingData.entries.RemoveRange(MaxRankingEntries, rankingData.entries.Count - MaxRankingEntries);
         }
 
-        string json = JsonUtility.ToJson(rankingData, true); // 'true' para formatar o JSON
-        File.WriteAllText(savePath, json);
-        Debug.Log("Ranking salvo em: " + savePath);
+        SaveRanking(rankingData);
     }
 
-    public void AddScore(string name, int score)
-    {
-        ScoreEntry newEntry = new ScoreEntry { name = name, score = score };
-        rankingData.entries.Add(newEntry);
-        SaveRanking(); // Salva e ordena a lista
-    }
-
+    /// <summary>
+    /// Retorna a lista de scores salvos.
+    /// </summary>
     public List<ScoreEntry> GetRankingEntries()
     {
-        // Garante que nunca retorna nulo, para evitar erros em outros scripts
-        if (rankingData == null || rankingData.entries == null)
+        return LoadRanking().entries;
+    }
+
+    private void SaveRanking(RankingData rankingData)
+    {
+        // Converte o objeto para uma string JSON
+        string json = JsonUtility.ToJson(rankingData);
+        // Salva a string nos PlayerPrefs
+        PlayerPrefs.SetString(RankingKey, json);
+        PlayerPrefs.Save(); // Força o salvamento imediato no disco
+    }
+
+    private RankingData LoadRanking()
+    {
+        // Carrega a string JSON dos PlayerPrefs
+        string json = PlayerPrefs.GetString(RankingKey, "{}"); // Retorna "{}" se não houver nada salvo
+
+        // Converte a string JSON de volta para um objeto
+        RankingData rankingData = JsonUtility.FromJson<RankingData>(json);
+
+        // Garante que a lista dentro do objeto nunca seja nula
+        if (rankingData.entries == null)
         {
-            return new List<ScoreEntry>();
+            rankingData.entries = new List<ScoreEntry>();
         }
-        return rankingData.entries;
+
+        return rankingData;
+    }
+
+    // Ferramenta útil para testes! Clicando com o botão direito no componente no Inspector, você pode limpar os dados.
+    [ContextMenu("Limpar Dados do Ranking")]
+    public void ClearRankingData()
+    {
+        PlayerPrefs.DeleteKey(RankingKey);
+        PlayerPrefs.Save();
+        Debug.Log("Dados do ranking foram limpos!");
     }
 }
-
-// ---- FIM DO CÓDIGO CORRETO ----

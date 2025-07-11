@@ -33,23 +33,26 @@ public class UIMainMenu : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        // 2. Pega as entradas do RankingManager
+        // 2. Pega as entradas do RankingManager (que agora existe!)
+        if (RankingManager.Instance == null)
+        {
+            Debug.LogError("RankingManager não encontrado na cena!");
+            return;
+        }
         List<ScoreEntry> entries = RankingManager.Instance.GetRankingEntries();
 
-        // 3. Limita a exibição para os 10 primeiros, por exemplo
-        int numEntriesToShow = Mathf.Min(entries.Count, 10);
+        // 3. Define quantas entradas mostrar (o número de entradas salvas OU 3, o que for MENOR)
+        int numEntriesToShow = Mathf.Min(entries.Count, 3);
 
-        // 4. Cria um objeto de UI para cada entrada
-        for (int i = 0; i < 3; i++)
+        // 4. Cria um objeto de UI para cada entrada (LOOP SEGURO)
+        for (int i = 0; i < numEntriesToShow; i++)
         {
             GameObject entryObject = Instantiate(rankingEntryPrefab, rankingContainer);
             ScoreEntry currentEntry = entries[i];
 
-            // Acessa os componentes de texto do prefab
             TMP_Text nameText = entryObject.transform.Find("NameText").GetComponent<TMP_Text>();
             TMP_Text scoreText = entryObject.transform.Find("ScoreText").GetComponent<TMP_Text>();
 
-            // Preenche os textos
             nameText.text = currentEntry.name;
             scoreText.text = currentEntry.score.ToString();
 
@@ -61,20 +64,14 @@ public class UIMainMenu : MonoBehaviour
             }
             else if (i == 1) // 2º Lugar
             {
-                SetTextStyle(nameText, top2Font, top2FontSize, new Color(0.75f, 0.75f, 0.75f));
+                SetTextStyle(nameText, top2Font, top2FontSize, new Color(0.75f, 0.75f, 0.75f)); // Prata
                 SetTextStyle(scoreText, top2Font, top2FontSize, new Color(0.75f, 0.75f, 0.75f));
             }
             else if (i == 2) // 3º Lugar
             {
-                SetTextStyle(nameText, top3Font, top3FontSize, new Color(0.8f, 0.5f, 0.2f));
+                SetTextStyle(nameText, top3Font, top3FontSize, new Color(0.8f, 0.5f, 0.2f)); // Bronze
                 SetTextStyle(scoreText, top3Font, top3FontSize, new Color(0.8f, 0.5f, 0.2f));
             }
-           /* else // Outras posições
-            {
-                SetTextStyle(rankText, defaultFont, defaultFontSize, Color.white);
-                SetTextStyle(nameText, defaultFont, defaultFontSize, Color.white);
-                SetTextStyle(scoreText, defaultFont, defaultFontSize, Color.white);
-            }*/
         }
     }
 

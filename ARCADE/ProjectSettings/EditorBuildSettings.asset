@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/PH/Cenas/TESTEJOGO.unity
     guid: 733b8bf788018fa428adaf567ea44910
   - enabled: 1
-    path: Assets/Assets/CENA/GAMEOVER 1.unity
-    guid: 46b24b59580b112479a1b1106b6c159b
+    path: Assets/PH/Cenas/GAMEOVER.unity
+    guid: 9c85c74475c77cb4ebfa9b163c8aedb7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

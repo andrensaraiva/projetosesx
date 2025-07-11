@@ -575,8 +575,16 @@ MonoBehaviour:
   - {fileID: 555414307}
   - {fileID: 482805591}
   - {fileID: 360445598}
-  tempoMinimoEntrePisadas: 6
-  tempoMaximoEntrePisadas: 8
+  - {fileID: 1430025348}
+  - {fileID: 1469328016}
+  - {fileID: 1003215570}
+  - {fileID: 1052454202}
+  timeToReachMaxDifficulty: 120
+  initialMinWait: 8
+  initialMaxWait: 12
+  finalMinWait: 1.5
+  finalMaxWait: 3
+  chanceDeSpawnDuplo: 0.75
 --- !u!4 &225687837
 Transform:
   m_ObjectHideFlags: 0
@@ -1216,6 +1224,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1003215569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1003215570}
+  m_Layer: 0
+  m_Name: PontoPe_1 (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1003215570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003215569}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.44, y: 14, z: 0.41456154}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1005591673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,6 +1446,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1052454201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1052454202}
+  m_Layer: 0
+  m_Name: PontoPe_1 (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1052454202
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052454201}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.33, y: 14, z: 0.41456154}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1055183476
 GameObject:
   m_ObjectHideFlags: 0
@@ -1984,13 +2054,78 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballPrefabs:
-  - {fileID: 1841431009422773823, guid: 8863ecf277154c045b5bd4c2d6e0a126, type: 3}
-  - {fileID: 1841431009422773823, guid: 2fa1968b19fd0d7498c169d09dcc1cf4, type: 3}
   - {fileID: 1841431009422773823, guid: d310656465410134d88b0440b2df1a79, type: 3}
+  - {fileID: 1841431009422773823, guid: 2fa1968b19fd0d7498c169d09dcc1cf4, type: 3}
+  - {fileID: 1841431009422773823, guid: 8863ecf277154c045b5bd4c2d6e0a126, type: 3}
   spawnPoints:
   - {fileID: 1248916215}
   - {fileID: 709283596}
-  spawnInterval: 5
+  timeToReachMaxDifficulty: 360
+  initialSpawnInterval: 3
+  minSpawnInterval: 1.5
+  chanceDeSpawnDuploNoMaximo: 0.3
+--- !u!1 &1430025347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1430025348}
+  m_Layer: 0
+  m_Name: PontoPe_1 (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1430025348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430025347}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.08, y: 14, z: 0.41456154}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1469328015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1469328016}
+  m_Layer: 0
+  m_Name: PontoPe_1 (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1469328016
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469328015}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.68, y: 14, z: 0.41456154}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1607363585 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8135886326569738822, guid: 56fae09712773584fb63896d473a98ee, type: 3}
@@ -2562,6 +2697,10 @@ SceneRoots:
   - {fileID: 555414307}
   - {fileID: 482805591}
   - {fileID: 360445598}
+  - {fileID: 1430025348}
+  - {fileID: 1469328016}
+  - {fileID: 1003215570}
+  - {fileID: 1052454202}
   - {fileID: 4149473308499787706}
   - {fileID: 969709218}
   - {fileID: 1668569629}
