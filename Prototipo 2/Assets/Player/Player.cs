@@ -242,7 +242,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void Flip()
     {
         isFacingRight = !isFacingRight;
-        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+       // transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
     }
 
     public void TakeDamage(float damage)

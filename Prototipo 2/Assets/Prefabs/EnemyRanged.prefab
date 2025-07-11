@@ -266,15 +266,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
-  speed: 2.5
-  scoreValue: 10
+  speed: 1.5
+  scoreValue: 150
   playerTransform: {fileID: 0}
   coinPrefab: {fileID: 6967947146392876268, guid: e38ec4f6fa347214682b29c5a90ab25b, type: 3}
   healthBarFill: {fileID: 6268167578230129885}
   avoidStacking: 1
   separationForce: 5
   separationRadius: 1
-  attackRange: 5
+  attackRange: 3.5
   fireRate: 1
   projectilePrefab: {fileID: 6889713125657541051, guid: f6209ed7db19b2145aca7defb04ca174, type: 3}
   firePoint: {fileID: 5172068621762573515}

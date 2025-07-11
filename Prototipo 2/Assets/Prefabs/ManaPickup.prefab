@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f518aa44ef118af418c922c2d380a996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manaValue: 10
+  manaValue: 20
   collectionEffectPrefab: {fileID: 0}
   collectionSound: {fileID: 0}
   hasMagnetEffect: 1

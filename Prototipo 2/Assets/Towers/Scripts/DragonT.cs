@@ -22,18 +22,15 @@ public class RangedTower : TowerWithBuffs
         if (projectilePrefab == null || firePoint == null || currentTarget == null) return;
 
         Vector3 spawnPosition = firePoint.position;
-
-        // Calcula a direção exata para o alvo
         Vector2 direction = currentTarget.position - spawnPosition;
-
-        // Instancia o projétil
         GameObject projGO = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
 
-        // Pega o script e lança!
         Projectile projectileScript = projGO.GetComponent<Projectile>();
         if (projectileScript != null)
         {
-            projectileScript.Launch(direction);
+            // CHAMADA ATUALIZADA: Passa a direção E o dano atual da torre.
+            // A variável 'damage' aqui já pode ter sido alterada pelo sistema de buff.
+            projectileScript.Launch(direction, this.damage);
         }
     }
 }

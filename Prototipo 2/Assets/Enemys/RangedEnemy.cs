@@ -8,7 +8,7 @@ public class RangedEnemy : EnemyBase
     [SerializeField] private float fireRate = 1f; // Tiros por segundo
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint; // Ponto de onde o projétil sai
-
+    [SerializeField] private int damage = 1000; // ADICIONE ESTA LINHA para 
     private float fireCooldownTimer;
 
     protected override void Update()
@@ -57,17 +57,14 @@ public class RangedEnemy : EnemyBase
         if (projectilePrefab == null || firePoint == null || playerTransform == null) return;
 
         Vector3 spawnPosition = firePoint.position;
-
-        // Calcula a direção exata para o jogador
         Vector2 direction = playerTransform.position - spawnPosition;
-
         GameObject projectileGO = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
         Projectile projectileScript = projectileGO.GetComponent<Projectile>();
 
         if (projectileScript != null)
         {
-            // Lança o projétil na direção do jogador
-            projectileScript.Launch(direction);
+            // CHAMADA ATUALIZADA: Passa a direção E o dano do inimigo.
+            projectileScript.Launch(direction, this.damage);
         }
     }
 
